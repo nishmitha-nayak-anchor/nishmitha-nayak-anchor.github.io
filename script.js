@@ -17,15 +17,15 @@
    ("" or []) stays hidden, or shows a clearly marked placeholder.
    --------------------------------------------------------- */
 const CONFIG = {
-  herName: "",          // e.g. "Priya"  → replaces every "[Her Name]"
+  herName: "Nishmitha Nayak",          // e.g. "Priya"  → replaces every "[Her Name]"
   bio: "",              // optional: 1–3 lines shown in the About section
 
   // Optional quick facts under the bio. Rows with an empty value are hidden.
   facts: [
-    { label: "Based in",      value: "" },   // e.g. "Mangaluru"
-    { label: "Languages",     value: "" },   // e.g. "English · Hindi · Kannada"
-    { label: "Experience",    value: "" },   // e.g. "3 years"
-    { label: "Events hosted", value: "" },   // e.g. "25+"
+    { label: "Based in",      value: "Belthangady" },   // e.g. "Mangaluru"
+    { label: "Languages",     value: "Kannada" },   // e.g. "English · Hindi · Kannada"
+    { label: "Experience",    value: "2 years" },   // e.g. "3 years"
+    { label: "Events hosted", value: "10+" },   // e.g. "25+"
   ],
 
   // Optional "Highlights" section — shown only if you add real events.
@@ -40,12 +40,16 @@ const CONFIG = {
 
   // Contact. whatsapp = digits only with country code, e.g. "919876543210"
   contact: {
-    whatsapp: "",
-    email: "",
+    whatsapp: "918792258937",
+    email: "nishmithanayak.anchor@gmail.com",
   },
 
   // Optional social links, e.g. { label: "Instagram", url: "https://instagram.com/…" }
-  socials: [],
+  socials: [
+     {
+        label: "Instagram", url: "https://www.instagram.com/i_n_i_shh.__"
+     }
+  ],
 
   showCredit: true,     // the small "Crafted by Ashwith" line in the footer
 };
