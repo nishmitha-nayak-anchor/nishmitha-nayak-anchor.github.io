@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>The Art of Anchoring — Event Anchor &amp; Host</title>
+  <meta name="description" content="Event anchor and host portfolio — a voice that brings the stage alive. Get in touch to book for your event.">
+  <meta name="theme-color" content="#0b0907">
+
+  <!-- Link preview (WhatsApp, Instagram, LinkedIn…).
+       After deploying, replace the og:image URL with your full address,
+       e.g. https://YOUR-USERNAME.github.io/YOUR-REPO/assets/og.jpg (an absolute URL is required). -->
+  <meta property="og:title" content="The Art of Anchoring — Event Anchor & Host">
+  <meta property="og:description" content="A voice that brings the stage alive. Book for your event.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/og.jpg">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230b0907'/%3E%3Cpath d='M50 14c3 18 10 26 28 29-18 3-25 11-28 29-3-18-10-26-28-29 18-3 25-11 28-29Z' fill='%23e2b25c'/%3E%3C/svg%3E">
+
+  <!-- Marks JS availability so the intro overlay never traps visitors if JS is off -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preload" href="assets/fonts/lora.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/hero.jpg" as="image">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="is-intro">
+
+  <!-- Soft film grain + floating golden motes (drawn by script.js) -->
+  <canvas id="particles" aria-hidden="true"></canvas>
+
+  <!-- ============ OPENING TRANSITION ============ -->
+  <div class="intro" id="intro" data-step="0" aria-hidden="true">
+    <div class="intro__glow"></div>
+    <p class="intro__line">A little light<span>…</span></p>
+    <p class="intro__line">A little voice<span>…</span></p>
+    <p class="intro__line">A little magic<span>…</span></p>
+    <button class="intro__skip" id="introSkip" type="button">Skip</button>
+  </div>
+
+  <!-- ============ NAVIGATION (appears after the hero) ============ -->
+  <nav class="nav" id="nav" aria-label="Main">
+    <a class="nav__brand" href="#top"><span class="name-slot" data-her-name>[Her Name]</span></a>
+    <ul class="nav__links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a class="btn btn--sm" href="#contact">Book now</a>
+  </nav>
+
+  <main>
+
+    <!-- ============ 1. HERO ============ -->
+    <header class="hero" id="top">
+      <div class="hero__beam" aria-hidden="true"></div>
+
+      <div class="hero__frame hero-in" style="--i:0">
+        <div class="hero__photo">
+          <img src="assets/hero.jpg" width="960" height="1200"
+               alt="A young anchor smiling and holding a microphone on stage, in a deep purple and red silk saree"
+               fetchpriority="high">
+        </div>
+      </div>
+
+      <div class="hero__text">
+        <p class="eyebrow hero-in" style="--i:1">Event anchor &amp; host</p>
+        <h1 class="hero__title hero-in" style="--i:2">
+          <span class="hero__title-small">The Art of</span>
+          <span class="hero__title-big">Anchoring</span>
+        </h1>
+        <p class="hero__tagline hero-in" style="--i:3">A voice that brings the stage alive.</p>
+
+        <!-- ✏️ HER NAME: set `herName` in script.js (CONFIG) -->
+        <p class="hero__name hero-in" style="--i:4"><span class="name-slot" data-her-name>[Her Name]</span></p>
+        <p class="hero__roles hero-in" style="--i:5">Anchor <i>•</i> Host <i>•</i> Stage Presence</p>
+
+        <div class="hero__actions hero-in" style="--i:6">
+          <a class="btn" href="#contact">Book for your event</a>
+          <a class="btn btn--ghost" href="#gallery">View gallery</a>
+        </div>
+      </div>
+
+      <a class="scroll-cue hero-in" style="--i:7" href="#about">
+        <span>Discover more</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v15m0 0-6-6m6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </header>
+
+
+    <!-- ============ 2. ABOUT ============ -->
+    <section class="about section" id="about">
+      <div class="wrap wrap--narrow">
+        <p class="eyebrow reveal">About</p>
+        <p class="about__big reveal" style="--d:.05s">Every stage<br>has a story.</p>
+        <p class="about__big about__big--2 reveal" style="--d:.15s">
+          Some people can make that story <em>unforgettable.</em>
+        </p>
+
+        <div class="ornament reveal" style="--d:.3s" aria-hidden="true"><i></i></div>
+
+        <p class="about__body reveal" style="--d:.35s">
+          With confidence in her voice, energy in her presence, and a real connection with the audience,
+          she brings every moment on stage to life.
+        </p>
+
+        <!-- ✏️ OPTIONAL BIO: set `bio` in script.js (CONFIG). It appears here automatically. -->
+        <p class="about__bio reveal" id="bio" hidden></p>
+
+        <!-- ✏️ OPTIONAL QUICK FACTS: set `facts` in script.js. Empty values stay hidden. -->
+        <dl class="facts reveal" id="facts" hidden></dl>
+      </div>
+    </section>
+
+
+    <!-- ============ 3. THE CRAFT (3 cards) ============ -->
+    <section class="craft section" id="craft">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow">The craft</p>
+          <h2>The Art of Anchoring</h2>
+        </header>
+
+        <ul class="craft__grid">
+          <li class="card reveal" style="--d:0s">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><rect x="18" y="6" width="12" height="22" rx="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M11 22a13 13 0 0 0 26 0M24 35v7M17 42h14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <h3>Voice</h3>
+            <p>A voice that captures attention and gives every moment its rhythm.</p>
+          </li>
+          <li class="card reveal" style="--d:.12s">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><path d="M24 5c1.6 9 5 12.4 14 14-9 1.6-12.4 5-14 14-1.6-9-5-12.4-14-14 9-1.6 12.4-5 14-14Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M37 31c.6 3.4 1.8 4.6 5 5.2-3.2.6-4.4 1.8-5 5.2-.6-3.4-1.8-4.6-5-5.2 3.2-.6 4.4-1.8 5-5.2Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </span>
+            <h3>Presence</h3>
+            <p>Confidence, energy and personality that make the stage feel alive.</p>
+          </li>
+          <li class="card reveal" style="--d:.24s">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48"><circle cx="18" cy="24" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="30" cy="24" r="11" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+            </span>
+            <h3>Connection</h3>
+            <p>The ability to engage an audience and make every person feel part of the moment.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ============ 4. SERVICES ============
+         ✏️ Edit, remove or add rows to match what she actually hosts.
+         Keep the <option> list in the contact form (further down) in sync. -->
+    <section class="services section" id="services">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow">Services</p>
+          <h2>Anchoring for every occasion</h2>
+        </header>
+
+        <ol class="services__list">
+          <li class="service reveal">
+            <span class="service__no">01</span>
+            <h3>Cultural &amp; College Programs</h3>
+            <p>Fests, talent shows and stage programs that need energy, humour and a steady flow.</p>
+          </li>
+          <li class="service reveal" style="--d:.08s">
+            <span class="service__no">02</span>
+            <h3>Corporate &amp; Formal Events</h3>
+            <p>Polished, well-paced hosting for ceremonies, launches and gatherings.</p>
+          </li>
+          <li class="service reveal" style="--d:.16s">
+            <span class="service__no">03</span>
+            <h3>Award &amp; Felicitation Evenings</h3>
+            <p>Graceful introductions that give every name and every moment its due.</p>
+          </li>
+          <li class="service reveal" style="--d:.24s">
+            <span class="service__no">04</span>
+            <h3>Celebrations &amp; Ceremonies</h3>
+            <p>Warm, personal hosting for the occasions that matter most to your people.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- ============ 5. GALLERY ============
+         ✏️ Captions are generic on purpose. Edit data-caption + the caption text per tile. -->
+    <section class="gallery section" id="gallery">
+      <div class="wrap wrap--wide">
+        <header class="section-head reveal">
+          <p class="eyebrow">Moments on stage</p>
+          <h2>Frames of a presence</h2>
+        </header>
+
+        <ul class="gallery__grid" id="galleryGrid">
+          <li class="tile tile--a reveal">
+            <button type="button" class="tile__btn" data-caption="On Stage" aria-label="Open photo: On Stage">
+              <img src="assets/photo-1.jpg" width="900" height="1350" loading="lazy"
+                   alt="Full-length view of the anchor on stage, holding a microphone and a card, smiling">
+              <span class="tile__cap"><b>01</b>On Stage</span>
+            </button>
+          </li>
+          <li class="tile tile--b reveal" style="--d:.1s">
+            <button type="button" class="tile__btn" data-caption="In the Moment" aria-label="Open photo: In the Moment">
+              <img src="assets/photo-2.jpg" width="1400" height="933" loading="lazy"
+                   alt="The anchor mid-sentence, speaking into the microphone with a card in hand">
+              <span class="tile__cap"><b>02</b>In the Moment</span>
+            </button>
+          </li>
+          <li class="tile tile--c reveal" style="--d:.05s">
+            <button type="button" class="tile__btn" data-caption="Behind the Mic" aria-label="Open photo: Behind the Mic">
+              <img src="assets/photo-3.jpg" width="800" height="800" loading="lazy"
+                   alt="Close-up of the anchor's warm smile behind the microphone">
+              <span class="tile__cap"><b>03</b>Behind the Mic</span>
+            </button>
+          </li>
+          <li class="tile tile--d reveal" style="--d:.15s">
+            <button type="button" class="tile__btn" data-caption="Creating Memories" aria-label="Open photo: Creating Memories">
+              <img src="assets/photo-4.jpg" width="800" height="819" loading="lazy"
+                   alt="Close-up of the anchor speaking expressively to the audience">
+              <span class="tile__cap"><b>04</b>Creating Memories</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+
+    <!-- ============ 6. HOW IT WORKS ============ -->
+    <section class="process section" id="process">
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow">How it works</p>
+          <h2>From first hello to final applause</h2>
+        </header>
+
+        <ol class="process__steps">
+          <li class="step reveal">
+            <span class="step__no">1</span>
+            <h3>Share the occasion</h3>
+            <p>Tell her about the event, the audience and the mood you have in mind.</p>
+          </li>
+          <li class="step reveal" style="--d:.12s">
+            <span class="step__no">2</span>
+            <h3>Shape the flow</h3>
+            <p>Together you plan the run of show, so every segment lands smoothly.</p>
+          </li>
+          <li class="step reveal" style="--d:.24s">
+            <span class="step__no">3</span>
+            <h3>Own the stage</h3>
+            <p>On the day, she holds the room and keeps every moment moving.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+
+    <!-- ============ 7. HIGHLIGHTS (hidden until filled) ============
+         ✏️ Add real events in script.js → CONFIG.highlights -->
+    <section class="highlights section" id="highlights" hidden>
+      <div class="wrap wrap--narrow">
+        <header class="section-head reveal">
+          <p class="eyebrow">Experience</p>
+          <h2>Highlights</h2>
+        </header>
+        <ul class="highlights__list" id="highlightsList"></ul>
+      </div>
+    </section>
+
+
+    <!-- ============ 8. TESTIMONIALS (hidden until filled) ============
+         ✏️ Add real quotes in script.js → CONFIG.testimonials -->
+    <section class="testimonials section" id="testimonials" hidden>
+      <div class="wrap">
+        <header class="section-head reveal">
+          <p class="eyebrow">Kind words</p>
+          <h2>What people say</h2>
+        </header>
+        <ul class="testimonials__grid" id="testimonialsGrid"></ul>
+      </div>
+    </section>
+
+
+    <!-- ============ 9. CONTACT / BOOKING ============ -->
+    <section class="contact section" id="contact">
+      <div class="contact__halo" aria-hidden="true"></div>
+      <div class="wrap wrap--narrow">
+        <header class="section-head reveal">
+          <p class="eyebrow">Book</p>
+          <h2>Let’s make your event unforgettable</h2>
+          <p class="contact__lead">Tell her a little about your event and send the details straight to WhatsApp or email.</p>
+        </header>
+
+        <!-- No backend: the form builds a message and opens WhatsApp / your email app -->
+        <form class="enquiry reveal" id="enquiry" novalidate style="--d:.1s">
+          <div class="field">
+            <label for="fName">Your name</label>
+            <input id="fName" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="fType">Type of event</label>
+            <select id="fType" name="type">
+              <option>Cultural &amp; College Program</option>
+              <option>Corporate &amp; Formal Event</option>
+              <option>Award &amp; Felicitation Evening</option>
+              <option>Celebration &amp; Ceremony</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="fDate">Event date <span>(optional)</span></label>
+            <input id="fDate" name="date" type="date">
+          </div>
+          <div class="field field--full">
+            <label for="fMsg">About your event <span>(optional)</span></label>
+            <textarea id="fMsg" name="details" rows="4" placeholder="Venue, audience size, language, anything she should know…"></textarea>
+          </div>
+
+          <div class="enquiry__actions field--full">
+            <button class="btn" type="button" id="sendWhatsApp">Send on WhatsApp</button>
+            <button class="btn btn--ghost" type="button" id="sendEmail">Send by email</button>
+          </div>
+          <!-- Shown only until contact details are added in script.js -->
+          <p class="enquiry__note name-slot is-placeholder" id="contactNote" hidden>[Add WhatsApp / email in script.js → CONFIG.contact]</p>
+        </form>
+
+        <ul class="socials reveal" id="socials" hidden style="--d:.2s"></ul>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer__name"><span class="name-slot" data-her-name>[Her Name]</span></p>
+    <p class="footer__role">Event anchor &amp; host</p>
+    <p class="footer__meta">
+      <a href="#top">Back to top ↑</a>
+      <span id="credit"> · Crafted by Ashwith</span>
+    </p>
+  </footer>
+
+
+  <!-- ============ LIGHTBOX ============ -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+    <div class="lightbox__backdrop" data-lb-close></div>
+    <button class="lb-btn lb-btn--close" type="button" data-lb-close aria-label="Close">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+    <button class="lb-btn lb-btn--prev" type="button" id="lbPrev" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <button class="lb-btn lb-btn--next" type="button" id="lbNext" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <figure class="lightbox__figure">
+      <img id="lbImg" src="" alt="">
+      <figcaption><span id="lbCount"></span><span id="lbCaption"></span></figcaption>
+    </figure>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
